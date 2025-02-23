@@ -818,7 +818,10 @@ th {
   .main-header {
     align-self: stretch;
   }
-  
+
+  .dropbtn i {
+    color: black;
+  }
   .car-img {
     padding-right: 0px;
     padding-top: 20%;
