@@ -289,7 +289,7 @@ section {
 }
 
 #main {
-  height: 75vh;
+  height: 80vh;
   margin-bottom: 0px;
 }
 .car-img {
@@ -813,9 +813,9 @@ th {
   }
 
   #main {
-    height: 65vh;
+    height: 80vh;
   }
-
+  
   .logo {
     font-size: 15px;
     text-align: center;
@@ -880,7 +880,7 @@ th {
 
   .car-img {
     padding-right: 0px;
-    padding-top: 50px;
+    padding-top: 30%;
   }
 
   #car-main,
