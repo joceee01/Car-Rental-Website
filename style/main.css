@@ -823,7 +823,6 @@ th {
 
   .nav-container {
     height: 8vh;
-    
   }
 
   nav a, nav p,
@@ -836,6 +835,10 @@ th {
   nav p {
     text-align: center;
     white-space: nowrap;
+  }
+
+  .main-header h1 {
+    font-size: 25px;
   }
 
   .about-container {
