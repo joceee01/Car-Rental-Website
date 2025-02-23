@@ -816,6 +816,11 @@ th {
     height: 70vh;
   }
 
+  .car-img {
+    padding-right: 0px;
+    padding-top: 20%;
+  }
+
   .logo {
     font-size: 15px;
     text-align: center;
@@ -878,10 +883,7 @@ th {
     width: 65px;
   }
 
-  .car-img {
-    padding-right: 0px;
-    padding-top: 30%;
-  }
+  
 
   #car-main,
   #car-main h2,
