@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZoom Car Rental Office</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link href="style/main.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-container">
+        <a href="index.html" class="logo" id="home"><b>AZoom Rental</b></a>
+        <nav>
+            <!-- <a href="about.html">About Us</a> -->
+            <a href="reserve-car.html" id="reserve_car">Reserve Car</a>
+            <a href="contact.html">Contact Us</a>
+            <div class="dropdown" style="float: right;">
+                <button class="dropbtn">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="login.html" id="member_login">Member Login</a>
+                    <a href="signup.html" id="member_register">Register</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <section id="form-main">
+        <div class="row">
+            <div class="history-div col-12">
+                <h4 style="padding-left: 15px;">Rental History</h4>
+            </div>
+
+            <div class="col-12" style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Receipt No</th>
+                            <th>Car</th>
+                            <th>Pickup Date & Time</th>
+                            <th>Return Date & Time</th>
+                            <th>Days</th>
+                            <th>Rental Price</th>
+                            <th>Payment Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="rentalHistoryBody">
+                        <!-- Rental history will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="history-div col-12" style="margin-top: 100px;">
+                <h4 style="padding-left: 15px;">Payment Required</h4>
+            </div>
+
+            <div class="col-12" style="overflow-x: auto;">
+                <table id="additionalPaymentTable">
+                    <thead>
+                        <tr>
+                            <th>Receipt No</th>
+                            <th>Pickup Date & Time</th>
+                            <th>Return Date & Time</th>
+                            <th>Days</th>
+                            <th>Rental Price</th>
+                            <th>Additional Cost</th>
+                            <th>Reason</th>
+                            <th>Total Cost</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="additionalPaymentBody">
+                        <!-- Rental history will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Popup Modal -->
+    <div id="paymentModal" class="pay-modal">
+        <div class="pay-modal-content">
+            <span class="close">&times;</span>
+            <h2 style="margin-bottom: 30px;">Payment Details</h2>
+
+            <div class="form-group">
+                <label>Cardholder Name</label>
+                <input type="text" id="cardName" placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"
+                    oninput="formatCardNumber(this)">
+            </div>
+
+            <div class="payment-ex-cvv" style="display: flex;">
+                <div class="form-group" style="margin-right: 5px;">
+                    <label>Expiry Date</label>
+                    <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5"
+                        oninput="formatExpiryDate(this)">
+                </div>
+
+                <div class="form-group" style="margin-left: 5px;">
+                    <label>CVV</label>
+                    <input type="password" id="cvv" placeholder="***" maxlength="3">
+                </div>
+            </div>
+            <div>
+                <h5 style="margin-top: 5px; text-align: right;">S$<span id="payment_amount"></span></h5>
+            </div>
+            <button id="confirmPayment" class="car-btn" onclick="processPayment()"
+                style="margin-top: 15px; width: 100%;">Pay</button>
+        </div>
+    </div>
+
+    <section id="footer">
+        <div class="row">
+            <div class="footer-row col-md-4 col-12">
+                <b>AZoom Rental</b> <br>
+                <p>A Trusted Service at your fingertip.</p>
+            </div>
+            <div class="footer-row col-md-4 col-12">
+                <h4>Resources</h4>
+                <p>Reserve a Car</p>
+                <p>Manage Account</p>
+                <p>Help</p>
+            </div>
+            <div class="footer-row col-md-4 col-12">
+                <h4>Contact</h4>
+                <p>Email: info@azoomcarrental.com</p>
+            </div>
+            <div class="footer-row-2 col-md-6 col-12" style="margin-top: 20px; text-align: left;">
+                <span>Terms of Service &emsp; Privacy Policy</span>
+            </div>
+            <div class="footer-row-3 col-md-6 col-12" style="margin-top: 20px; text-align: center;">
+                <span>&copy; 2025 AZoom Car Rental - All Rights Reserved.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script src="script/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function displayRentalHistory() {
+                let rentalHistory = JSON.parse(localStorage.getItem("rentalHistory")) || [];
+                console.log(rentalHistory);
+
+                // Filter history for the specific user
+                let userHistory = rentalHistory.filter(record => record.user === username);
+                console.log(userHistory);
+
+                let tableBody = document.getElementById("rentalHistoryBody");
+                tableBody.innerHTML = ""; // Clear existing content
+
+                if (userHistory.length === 0) {
+                    tableBody.innerHTML = "<tr><td colspan='6'>No rental history found.</td></tr>";
+                    return;
+                }
+
+                userHistory.forEach(record => {
+                    let row = `
+                        <tr>
+                            <td>${record.receipt_no}</td>
+                            <td>${record.car_name}</td>
+                            <td>${formatDateTime(record.pickup_date_time)}</td>
+                            <td>${formatDateTime(record.return_date_time)}</td>
+                            <td>${record.rental_days}</td>
+                            <td>$${record.rental_cost}</td>
+                            <td><b>${record.payment_status}</b></td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            }
+
+            function displayAddRentalHistory() {
+                const history = JSON.parse(localStorage.getItem("rentalHistory")) || [];
+                const rentals = history.filter(rental => rental.ready_for_payment == "Yes");
+
+                const tableBody = document.getElementById("additionalPaymentBody");
+
+                if (rentals.length === 0) {
+                    document.getElementById("additionalPaymentTable").style.display = "none"; // Hide if no damaged rentals
+                    return;
+                }
+                tableBody.innerHTML = rentals.map(rental => {
+                    let paymentStatus = rental.payment_status;
+                    let payButton = paymentStatus == "Paid" ? "Paid" :
+                        `<a style="cursor: pointer" class="pay-btn" data-receipt="${rental.receipt_no}">
+                                Click to Pay
+                            </a>`;
+
+                    return `
+                    <tr>
+                        <td>${rental.receipt_no}</td>
+                        <td>${formatDateTime(rental.pickup_date_time)}</td>
+                        <td>${formatDateTime(rental.return_date_time)}</td>
+                        <td>${rental.rental_days}</td>
+                        <td>$${rental.rental_cost}.00</td>
+                        <td>$${rental.add_cost}.00</td>
+                        <td>${rental.add_reason}</td>
+                        <td>$${rental.rental_cost + rental.add_cost}.00</td>
+                        <td style="color: #ff335f;"><b>${payButton}</b></td>
+                    </tr>
+                `}).join("");
+
+                document.getElementById("additionalPaymentTable").style.display = "table"; // Show the table
+
+                document.querySelectorAll(".pay-btn").forEach(button => {
+                    button.addEventListener("click", function () {
+                        let receiptNo = this.getAttribute("data-receipt");
+
+                        let rentalHistory = JSON.parse(localStorage.getItem("rentalHistory")) || [];
+                        let record = rentalHistory.find(r => String(r.receipt_no) === String(receiptNo));
+
+                        if (record) {
+                            document.getElementById("payment_amount").textContent = record.rental_cost + record.add_cost + ".00";
+                            document.getElementById("confirmPayment").setAttribute("data-receipt", receiptNo);
+                            document.getElementById("paymentModal").style.display = "flex";
+                            document.body.classList.add("modal-open");
+                        }
+                    });
+                });
+            }
+
+            function formatDateTime(isoString) {
+                const date = new Date(isoString);
+
+                const options = {
+                    day: "2-digit",
+                    month: "short", // "Feb"
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true // AM/PM format
+                };
+
+                return date.toLocaleString("en-US", options).replace(",", "");
+            }
+
+            window.onload = function () {
+                displayRentalHistory();
+                displayAddRentalHistory();
+            };
+        });
+
+        // document.addEventListener("DOMContentLoaded", function () {
+
+        // });
+
+        document.querySelector(".close").addEventListener("click", function () {
+            document.getElementById("paymentModal").style.display = "none";
+            document.body.classList.remove("modal-open");
+        });
+
+        document.getElementById("confirmPayment").addEventListener("click", function () {
+            let receiptNo = this.getAttribute("data-receipt");
+
+            let rentalHistory = JSON.parse(localStorage.getItem("rentalHistory")) || [];
+            let recordIndex = rentalHistory.findIndex(r => String(r.receipt_no) === String(receiptNo));
+
+            if (recordIndex !== -1) {
+                rentalHistory[recordIndex].payment_status = "Paid";
+
+                localStorage.setItem("rentalHistory", JSON.stringify(rentalHistory));
+
+                alert("Payment successful!");
+                document.getElementById("paymentModal").style.display = "none";
+                window.location.reload(); // Refresh to show updated status
+            }
+        });
+
+        // Format Card Number with Spaces
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\D/g, ""); // Remove non-numeric characters
+            value = value.replace(/(\d{4})/g, "$1 ").trim(); // Add space every 4 digits
+            input.value = value;
+        }
+
+        // Format Expiry Date as MM/YY
+        function formatExpiryDate(input) {
+            let value = input.value.replace(/\D/g, ""); // Remove non-numeric characters
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + "/" + value.substring(2, 4);
+            }
+            input.value = value;
+        }
+
+        // Simulated Payment Processing
+        // function processPayment(receiptNo) {
+        //     const cardName = document.getElementById("cardName").value.trim();
+        //     const cardNumber = document.getElementById("cardNumber").value.replace(/\s/g, "");
+        //     const expiryDate = document.getElementById("expiryDate").value;
+        //     const cvv = document.getElementById("cvv").value;
+
+        //     if (!cardName || cardNumber.length !== 16 || !expiryDate.match(/^\d{2}\/\d{2}$/) || cvv.length !== 3) {
+        //         alert("Please enter valid payment details.");
+        //         return;
+        //     }
+
+        //     let rentalHistory = JSON.parse(localStorage.getItem("rentalHistory")) || [];
+        //     let recordIndex = rentalHistory.findIndex(r => r.receipt_no == receiptNo);
+
+        //     if (recordIndex !== -1) {
+        //         rentalHistory[recordIndex].payment_status = "Paid";
+
+        //         localStorage.setItem("rentalHistory", JSON.stringify(rentalHistory)); // Save to localStorage
+        //         alert("Payment successful! Thank you.");
+        //         closePaymentPopup();
+        //     } else {
+        //         alert("Receipt number not found!");
+        //     }
+        // }
+
+
+    </script>
+</body>
+
+</html>
