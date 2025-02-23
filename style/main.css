@@ -251,6 +251,7 @@ nav a.active::after {
   position: relative;
   display: inline-block;
   align-self: center;
+  color: black;
 }
 
 .dropdown-content {
