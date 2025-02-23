@@ -815,7 +815,10 @@ th {
   #main {
     height: 70vh;
   }
-
+  .main-header {
+    align-self: stretch;
+  }
+  
   .car-img {
     padding-right: 0px;
     padding-top: 20%;
