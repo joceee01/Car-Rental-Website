@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZoom Car Rental Office</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link href="style/main.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-container">
+        <a href="index.html" class="logo" id="home"><b>AZoom Rental Staff</b></a>
+        <nav>
+            <p style="font-size: 18px; align-self: center;">Welcome <span id="username"
+                    style="font-weight: bold;"></span>!</p>
+            <a id="logout" style="cursor: pointer;"><i class="fa fa-sign-out" style="padding-right: 5px;"></i>Logout</a>
+        </nav>
+    </div>
+
+    <div id="update_form">
+        <div class="confirm-header">
+            <h4 style="padding-left: 15px;">Receipt No: <span id="receipt-no"></span></h4>
+            <h6 style="padding-left: 15px;">
+                Update additional costs required.</span>
+            </h6>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Username</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input id="user" disabled />
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Credit Card Number</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <input id="creditcard" placeholder="1234 5678 9012 3456" oninput="formatCardNumber(this)"
+                        disabled />
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Pickup Date & Time</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-male"></i>
+                    <input id="pickup" type="datetime-local" disabled />
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Return Date & Time</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-male"></i>
+                    <input id="return" type="datetime-local" disabled />
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Pickup Branch</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-map-pin"></i>
+                    <input id="pickupLocation" disabled />
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Return Carpark</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-car"></i>
+                    <input id="returnLocation" disabled />
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Ready for Payment?</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <select id="ready_for_payment">
+                        <option>No</option>
+                        <option>Yes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Additional Cost</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-dollar"></i>
+                    <input id="add_cost" />
+                </div>
+            </div>
+            <div class="col-12">
+                <label style="font-size: 13px; color: #B4B6B7;">Reason</label>
+                <div class="select-icon">
+                    <i class="fa-solid fa-info-circle"></i>
+                    <textarea id="add_reason" rows="5"></textarea>
+                </div>
+            </div>
+
+            <div class="reserve-btn-div col-12" style="text-align: right;">
+                <button id="reserve_and_pay" class="car-btn" onclick="update()" style="margin-top: 10px;">
+                    <span>
+                        <i class="fa fa-check" style="padding-right: 10px;"></i>
+                        Update
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script/staff-main.js"></script>
+    <script>
+        const receiptNo = params.get('receiptNo');
+        document.addEventListener("DOMContentLoaded", function () {
+            function loadSummary(receiptNo) {
+                const rentalHistory = JSON.parse(localStorage.getItem("rentalHistory")) || [];
+                const reservation = rentalHistory.find(r => r.receipt_no === receiptNo);
+
+                console.log(reservation);
+
+                const formattedCard = formatCardNumber(reservation.credit_card);
+                const formattedReturnTime = formatDateTime(reservation.return_date_time);
+
+                document.getElementById("user").value = reservation.user;
+                document.getElementById("receipt-no").textContent = reservation.receipt_no;
+                document.getElementById("creditcard").value = formattedCard;
+                document.getElementById("pickup").value = reservation.pickup_date_time;
+                document.getElementById("return").value = reservation.return_date_time;
+                document.getElementById("pickupLocation").value = reservation.pickup_location;
+                document.getElementById("returnLocation").value = reservation.return_location;
+            }
+
+            function formatCardNumber(cardNumber) {
+                if (!cardNumber) return "****-****-****-****"; // Default if no card is found
+                return "****-****-****-" + cardNumber.slice(-4); // Mask all but last 4 digits
+            }
+
+            function formatDateTime(isoString) {
+                const date = new Date(isoString);
+
+                const options = {
+                    day: "2-digit",
+                    month: "short", // "Feb"
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true // AM/PM format
+                };
+
+                return date.toLocaleString("en-US", options).replace(",", "");
+            }
+
+            window.onload = function () {
+                loadSummary(receiptNo);
+            };
+        });
+
+        function update() {
+            let rentalHistory = JSON.parse(localStorage.getItem("rentalHistory")) || [];
+            let newCheckAdd = document.getElementById("ready_for_payment").value;
+            let newAddCost = parseFloat(document.getElementById("add_cost").value);
+            let newAddReason = document.getElementById("add_reason").value;
+
+            let recordIndex = rentalHistory.findIndex(r => r.receipt_no == receiptNo);
+            console.log(recordIndex)
+
+
+            if (recordIndex !== -1) {
+                rentalHistory[recordIndex].ready_for_payment = newCheckAdd;
+                rentalHistory[recordIndex].add_cost = newAddCost ? newAddCost : 0; // Update value
+                rentalHistory[recordIndex].add_reason = newAddReason;
+
+                localStorage.setItem("rentalHistory", JSON.stringify(rentalHistory)); // Save to localStorage
+
+                alert("Record Updated Successfully!");
+                window.location.href = `reservation-listing.html?username=${encodeURIComponent(username)}`;
+            } else {
+                alert("Receipt number not found!");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

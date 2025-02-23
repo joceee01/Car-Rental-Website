@@ -1,0 +1,107 @@
+[
+    {
+      "id": 1,
+      "name": "BMW i4",
+      "brand": "BMW",
+      "vehicle_type": "Sedan",
+      "seats": "5 Seater",
+      "daily_rate": 200,
+      "weekly_rate": 1400,
+      "monthly_rate": 5000,
+      "boot_space": "1 large, 2 small luggages",
+      "description": "An electric luxury sedan with high performance.",
+      "image": "../images/BMW-Sedan.png"
+    },
+    {
+      "id": 2,
+      "name": "BMW X3 M50",
+      "brand": "BMW",
+      "vehicle_type": "SUV",
+      "seats": "5 Seater",
+      "daily_rate": 300,
+      "weekly_rate": 2000,
+      "monthly_rate": 8000,
+      "boot_space": "1 large, 2 small luggages",
+      "description": "A classic American muscle car known for speed and style.",
+      "image": "../images/BMW-SUV.png"
+    },
+    {
+      "id": 3,
+      "name": "Toyota Camry",
+      "brand": "Toyota",
+      "vehicle_type": "Sedan",
+      "seats": "5 Seater",
+      "daily_rate": 130,
+      "weekly_rate": 900,
+      "monthly_rate": 3500,
+      "boot_space": "1 large, 2 small luggages",
+      "description": "A reliable and efficient sedan perfect for daily commutes.",
+      "image": "../images/toyota-camry.png"
+    },
+    {
+      "id": 4,
+      "name": "Honda e:Ny1 Advance",
+      "brand": "Honda",
+      "vehicle_type": "SUV",
+      "seats": "5 Seater",
+      "daily_rate": 130,
+      "weekly_rate": 900,
+      "monthly_rate": 3500,
+      "boot_space": "2 large, 4 small luggages",
+      "description": "The smart stylish SUV, with smooth electric performance.",
+      "image": "../images/honda-eNy1 Advance.png"
+    },
+    {
+      "id": 5,
+      "name": "Honda Civic Sport",
+      "brand": "Honda",
+      "vehicle_type": "Sports",
+      "seats": "5 Seater",
+      "daily_rate": 110,
+      "weekly_rate": 700,
+      "monthly_rate": 3000,
+      "boot_space": "1 large, 2 small luggages",
+      "description": "A sporty and dynamic car for enthusiasts seeking performance and reliability.",
+      "image": "../images/honda-civic-sports.png"
+    },
+    {
+      "id": 6,
+      "name": "Lexus LM 350h",
+      "brand": "Lexus",
+      "vehicle_type": "MPV",
+      "seats": "7 Seater",
+      "daily_rate": 150,
+      "weekly_rate": 1000,
+      "monthly_rate": 4000,
+      "boot_space": "2 large, 4 small luggages",
+      "description": "A sustainable and sophisticated with its enhanced driving and passenger experience.",
+      "image": "../images/lexus-lm500h.png"
+    },
+    {
+      "id": 7,
+      "name": "Lexus UX 300e",
+      "brand": "Lexus",
+      "vehicle_type": "Sedan",
+      "seats": "5 Seater",
+      "daily_rate": 120,
+      "weekly_rate": 800,
+      "monthly_rate": 3500,
+      "boot_space": "1 large, 2 small luggages",
+      "description": "An efficient and stylish electric sedan that delivers a smooth and quiet driving experience.",
+      "image": "../images/lexus-ux300e.png"
+    },
+    {
+      "id": 8,
+      "name": "Mercedes-Benz EQB 250+",
+      "brand": "Mercedes-Benz",
+      "vehicle_type": "SUV",
+      "seats": "5 Seater",
+      "daily_rate": 300,
+      "weekly_rate": 2000,
+      "monthly_rate": 8000,
+      "boot_space": "1 large, 2 small luggages",
+      "description": "A luxurious electric SUV combining cutting-edge technology with elegant design.",
+      "image": "../images/merc-EQB-250+ SUV.png"
+    }
+  ]
+  
