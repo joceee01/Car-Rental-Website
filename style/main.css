@@ -86,7 +86,7 @@ body {
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   justify-content: center;
-  margin: 0 30px
+  margin: 0 30px;
 }
 
 /* Hide scrollbar */
@@ -416,7 +416,6 @@ section {
   width: 90%;
 }
 
-
 .car-icon {
   flex: 0 0 auto;
   width: 18%;
@@ -508,10 +507,9 @@ section {
 }
 .login-container {
   border-radius: 5px;
-  min-height: 70%;
-  width: 35%;
+  width: 30%;
   margin: auto;
-  padding: 60px 60px;
+  padding: 70px 60px;
   background-color: white;
   align-content: center;
   text-align: center;
@@ -608,7 +606,7 @@ section {
 }
 
 .rent-car-img {
-    width: 80%;
+  width: 80%;
   margin: 60px auto;
   align-items: center;
 }
@@ -638,7 +636,7 @@ section {
 
 @media screen and (max-width: 1349px) {
   .login-container {
-    width: 50%;
+    width: 40%;
   }
   .signup-container {
     width: 50%;
@@ -798,7 +796,8 @@ th {
 
 /* Mobile Responsive */
 @media screen and (max-width: 900px) {
-  p, #text {
+  p,
+  #text {
     font-size: 15px !important;
   }
 
@@ -826,7 +825,8 @@ th {
     height: 8vh;
   }
 
-  nav a, nav p,
+  nav a,
+  nav p,
   .dropbtn {
     padding: 0.75rem 1rem !important;
     font-size: 13px;
@@ -878,8 +878,6 @@ th {
   .step-images {
     width: 65px;
   }
-
-  
 
   #car-main,
   #car-main h2,
@@ -974,15 +972,13 @@ th {
 
   .login-container {
     width: 90%;
-    padding: 0 40px;
-    min-height: 60%;
+    padding: 70px 40px;
   }
   .signup-container {
-    width: 80%;
-    padding: 0 40px;
-    min-height: 85%;
+    width: 90%;
+    padding: 70px 40px;
   }
-  .signup-container .options {
+  .login-container .options, .signup-container .options {
     font-size: 13px;
   }
   .footer-row {
