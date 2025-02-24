@@ -26,7 +26,8 @@
             <div class="col-12">
                 <div class="input-icon">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" id="username" name="Username" placeholder="Username" required />
+                    <input type="text" id="username" name="Username" placeholder="Username" required
+                        oninput="this.value = this.value.toLowerCase()" />
                 </div>
             </div>
             <div class="col-12">
@@ -71,7 +72,7 @@
                 alert("Password cannot be empty.");
                 hasError = true;
             }
-            
+
             // If no errors, redirect to the new page
             if (!hasError && username != "staff123") {
                 if (id) {
