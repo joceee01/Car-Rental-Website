@@ -86,6 +86,7 @@ body {
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   justify-content: center;
+  margin: 0 30px
 }
 
 /* Hide scrollbar */
@@ -159,11 +160,6 @@ body {
 
 /* Responsive: Adjust max-width for smaller screens */
 @media (max-width: 768px) {
-  .icon {
-    width: 55px;
-    height: 55px;
-    font-size: 24px;
-  }
   .car-icon {
     width: 30% !important;
   }
@@ -177,12 +173,6 @@ body {
 }
 
 @media (max-width: 900px) {
-  .icon {
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-  }
-
   .scroll-left,
   .scroll-right {
     width: 35px;
@@ -612,7 +602,7 @@ section {
 
 /*Reserve car*/
 #car-main {
-  margin: 50px;
+  margin: 30px;
   margin-top: 10px;
   text-align: left;
 }
